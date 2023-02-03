@@ -1,10 +1,11 @@
 const express=require('express');
-const app=express();
-const productRoutes=require('./productRoutes');
+const router=express.Router();
+const {getCSV, getCompanyById, getCompanyBySector}=require('../controllers/getCSVController');
 
-app.use('/products',productRoutes);
+// /api
+router.post('/save',getCSV);
+router.get('/company/:id',getCompanyById);
+router.get('/sector',getCompanyBySector);
 
-
-
-module.exports=app;
-
+// router.get('/companies',getTopRankedCompanies);
+module.exports=router;
