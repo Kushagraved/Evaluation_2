@@ -68,8 +68,6 @@ const getCSV=async(req,res)=>{
   
   await MapIdToSector.bulkCreate(json);
   res.status(200).json({data:json});
-
-
 }; 
 
 const getCompanyById=async(req,res)=>{
@@ -80,14 +78,15 @@ const getCompanyById=async(req,res)=>{
   //   console.log(companyDetails);
   try {
     let {id}=req.params;
+    if(id===undefined || id===''){
+      res.status(400).json({message:'invalid id'});
+    }
     const companyDetails=await apiServices.getCompanyByIdService({id});
     res.status(200).json(companyDetails);
   } catch (error) {
-    res.status();
+    res.status(500).json(error);
   }
 
-
-  res.status(200).json(companyDetails);
 
 };
 

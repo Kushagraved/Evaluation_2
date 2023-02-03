@@ -21,6 +21,6 @@ db.sequelize = sequelize;
 db.MapIdToSector=require('./mapIdToSector')(sequelize,DataTypes,Model);
 db.CompanyInfo=require('./companyInfo')(sequelize,DataTypes,Model);
 
-db.sequelize.sync({force: false});
+db.sequelize.sync({force: true});
 module.exports = db;
 
